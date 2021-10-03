@@ -9,16 +9,18 @@ const filmes = [
         imagem: 'https://static.wixstatic.com/media/c43ed8_5c2df17605ae40828b9863e64b435541~mv2.png/v1/fit/w_758%2Ch_760%2Cal_c/file.png',
         genero: 'Sci-fi',
         nota: '10',
-        // id: identificadoAleatorio()
-        id: 1
+        assistido: false,
+        id: identificadoAleatorio()
+        // id: 1
     },
     {
         nome: 'Matrix',
         imagem: 'https://static.wixstatic.com/media/c43ed8_5c2df17605ae40828b9863e64b435541~mv2.png/v1/fit/w_758%2Ch_760%2Cal_c/file.png',
         genero: 'Sci-fi',
         nota: '10',
-        // id: identificadoAleatorio()
-        id: 2
+        assistido: false,
+        id: identificadoAleatorio()
+        // id: 2
     }
 ]
 
@@ -55,12 +57,15 @@ router.put('/:id', (req, res) => {
    
     const editaFilme = req.body;
     const id = req.params.id;
+
+    console.log(editaFilme);
     let filmeAtual = filmes.find( (filme) => filme.id == id)
 
     filmeAtual.nome = editaFilme.nome;
     filmeAtual.imagem = editaFilme.imagem;
     filmeAtual.genero = editaFilme.genero;
     filmeAtual.nota = editaFilme.nota;
+    filmeAtual.assistido = editaFilme.assistido
 
     res.send({
         message: `Filme ${filmeAtual.nome} atualizado com sucesso!`,
